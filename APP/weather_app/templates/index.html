@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather App</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <main class="main-container">
+
+        <div class="location-and-date">
+            <h1 class="location-and-date__location">{{ city_weather.name }}, {{ city_weather.country }}</h1>
+            <div>{{ date }}</div>
+        </div>
+
+
+        <div class="current-temperature">
+            <div class="current-temperature__icon-container">
+                <img src="http://openweathermap.org/img/w/{{city_weather.icon}}.png" class="current-temperature__icon"
+                    alt="">
+            </div>
+            <div class="current-temperature__content-container">
+                <div class="current-temperature__value">{{ city_weather.temp }}&deg;</div>
+                <div class="current-temperature__summary">{{ city_weather.description }}</div>
+            </div>
+        </div>
+
+
+        <div class="current-stats">
+            <div>
+                <div class="current-stats__value">{{ city_weather.high }}&deg;</div>
+                <div class="current-stats__label">High</div>
+                <div class="current-stats__value">{{ city_weather.low }}&deg;</div>
+                <div class="current-stats__label">Low</div>
+            </div>
+            <div>
+                <div class="current-stats__value">{{ city_weather.wind_speed }}mps</div>
+                <div class="current-stats__label">Wind</div>
+                <div class="current-stats__value">{{ city_weather.humidity }}%</div>
+                <div class="current-stats__label">Humidity</div>
+            </div>
+            <div>
+                <div class="current-stats__value">{{ city_weather.sunrise }}</div>
+                <div class="current-stats__label">Sunrise</div>
+                <div class="current-stats__value">{{ city_weather.sunset }}</div>
+                <div class="current-stats__label">Sunset</div>
+            </div>
+        </div>
+
+
+
+        <div class="next-5-days">
+            <h2 class="next-5-days__heading">Next 5 days</h2>
+            <div class="next-5-days__container">
+
+                {% for daily_forecast in city_weather.forecast %}
+                <div class="next-5-days__row">
+
+                    <div class="next-5-days__date">
+                        {{ daily_forecast['day'] }}
+                        <div class="next-5-days__label">{{ daily_forecast['date'] }}</div>
+                    </div>
+
+                    <div class="next-5-days__low">
+                        {{ daily_forecast['low'] }}&deg;
+                        <div class="next-5-days__label">Low</div>
+                    </div>
+
+                    <div class="next-5-days__high">
+                        {{ daily_forecast['high'] }}&deg;
+                        <div class="next-5-days__label">High</div>
+                    </div>
+
+                    <div class="next-5-days__icon">
+                        <img src="http://openweathermap.org/img/w/{{daily_forecast['icon']}}.png" alt="">
+                    </div>
+
+                    <div class="next-5-days__humidity">
+                        {{ daily_forecast['humidity'] }}%
+                        <div class="next-5-days__label">Humidity</div>
+                    </div>
+
+                    <div class="next-5-days__wind">
+                        {{ daily_forecast['wind_speed'] }}mps
+                        <div class="next-5-days__label">Wind</div>
+                    </div>
+
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>
