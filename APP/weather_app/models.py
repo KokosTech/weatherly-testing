@@ -40,7 +40,9 @@ class CityWeather:
         self.forecast = []
 
     def add_daily_forecast(self, json):
-        for i in range(1, 6):
+        assert json is not None
+
+        for i in range(0, len(json['daily'])):
             day = json['daily'][i]
             self.forecast.append({
                 'day': datetime.utcfromtimestamp(day['dt']).strftime('%a'),
@@ -54,6 +56,8 @@ class CityWeather:
 
     @staticmethod
     def get_weather(city_name):
+        assert city_name is not None
+
         current_weather = WeatherAPI.fetch_current_weather(city_name)
 
         lat = current_weather['coord']['lat']
