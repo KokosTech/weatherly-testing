@@ -21,6 +21,33 @@ body {
   }
 }
 
+/* nav-bar elements */
+
+.nav-bar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.15);
+  padding: .75rem .75rem .75rem 1.5rem;
+  font-size: 1.3rem;
+  border-radius: .5rem;
+  border: none;
+  color: white;
+}
+
+.search-box:focus {
+  outline: none;
+}
+
+/* end nav-bar elementes */
+
 .main-container {
   display: flex;
   flex-wrap: wrap;
