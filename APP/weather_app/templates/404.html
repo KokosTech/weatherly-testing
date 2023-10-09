@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather App</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="../static/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body style="height: 100vh; margin: 0; padding: 0">
+    <main class="main-container" style="min-height: 100%;">
+      <div
+        style="
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+          min-height: 100%;
+          gap: 2rem;
+        "
+      >
+        <div>
+          <h1>404</h1>
+          <p>Page not found</p>
+        </div>
+        <form
+          style="display: flex; justify-content: center; align-items: center"
+          action="{{ url_for('main.index') }}"
+          method="get"
+        >
+          <input
+            id="city"
+            name="city"
+            type="text"
+            class="search-box"
+            placeholder="Try again?"
+          />
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

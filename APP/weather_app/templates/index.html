@@ -14,7 +14,15 @@
   <body>
     <main class="main-container">
       <nav class="nav-bar">
-        <input type="text" class="search-box" placeholder="Search for a city" />
+        <form action="{{ url_for('main.index') }}" method="get">
+          <input
+            id="city"
+            name="city"
+            type="text"
+            class="search-box"
+            placeholder="Search for a city"
+          />
+        </form>
         <div class="search-results"></div>
       </nav>
       <div class="location-and-date">
