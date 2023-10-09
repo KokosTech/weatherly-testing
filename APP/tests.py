@@ -1,5 +1,5 @@
 import pytest
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 from weather_app.models import WeatherAPI, CityWeather
 
 # Mock response for WeatherAPI
@@ -39,14 +39,3 @@ def test_add_daily_forecast():
     city_weather = CityWeather(MOCK_CURRENT_WEATHER_RESPONSE)
     city_weather.add_daily_forecast(MOCK_DAILY_FORECAST_RESPONSE)
     assert len(city_weather.forecast) == 1
-#
-# def test_get_weather():
-#     with patch('requests.get') as mock_get:
-#         mock_get.side_effect = [
-#             MagicMock(json=lambda: MOCK_CURRENT_WEATHER_RESPONSE),
-#             MagicMock(json=lambda: MOCK_DAILY_FORECAST_RESPONSE)
-#         ]
-#         city_weather = CityWeather.get_weather("TestCity")
-#         assert city_weather.name == 'TestCity'
-#         assert len(city_weather.forecast) == 5  # Assuming there are 5 days of forecast
-#         # Add more assertions...
