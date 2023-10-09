@@ -10,4 +10,4 @@ How to run the project?
 
 Result:
 
-<img width="958" alt="image" src="https://user-images.githubusercontent.com/71849513/202268881-b25b3b1d-064a-4827-bf48-c20763fb7f8b.png">
+<img width="958" alt="image" src="docs/assets/gui.png">
