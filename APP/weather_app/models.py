@@ -1,8 +1,15 @@
-import requests
 from datetime import datetime
+
+import requests
 
 WEATHER_API_KEY = "527183b7900188cd42cccab8cc903fd5"
 
+def city_exists(city_name):
+    current_weather_url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={WEATHER_API_KEY}&units=metric"
+    current_weather = requests.get(current_weather_url).json()
+    if current_weather['cod'] == 200:
+        return True
+    return False
 
 class WeatherAPI:
     @staticmethod
@@ -16,7 +23,6 @@ class WeatherAPI:
         daily_forecast_url = f"https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={WEATHER_API_KEY}&units=metric"
         daily_forecast = requests.get(daily_forecast_url).json()
         return daily_forecast
-
 
 class CityWeather:
     def __init__(self, json):

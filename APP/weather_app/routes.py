@@ -1,7 +1,7 @@
-from flask import render_template, Blueprint
 from datetime import datetime
-from weather_app.models import CityWeather
 
+from flask import Blueprint, render_template, request
+from weather_app.models import CityWeather, city_exists
 
 main = Blueprint('main', __name__)
 date = datetime.now().strftime("%A %d %B")
@@ -9,12 +9,10 @@ date = datetime.now().strftime("%A %d %B")
 
 @main.route('/')
 def index():
-    city_name = 'Sofia'
-    city_weather = CityWeather.get_weather(city_name)
-    return render_template("index.html", city_weather=city_weather, date=date)
+    city_name = request.args.get('city') or 'Sofia'
 
-
-@main.route('/<city_name>')
-def weather(city_name):
+    if not city_exists(city_name):
+        return render_template("404.html", error=True, date=date) 
+    
     city_weather = CityWeather.get_weather(city_name)
     return render_template("index.html", city_weather=city_weather, date=date)
