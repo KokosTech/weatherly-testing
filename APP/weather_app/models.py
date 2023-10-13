@@ -56,7 +56,7 @@ class CityWeather:
 
     @staticmethod
     def get_weather(city_name):
-        assert city_name is not None
+        assert city_name is not None and city_name is not ""
 
         current_weather = WeatherAPI.fetch_current_weather(city_name)
 
