@@ -11,7 +11,3 @@ How to run the project?
 Result:
 
 <img width="958" alt="image" src="docs/assets/gui.png">
-
-And test coverage:
-
-<img width="958" alt="image" src="docs/assets/test_coverage.png">
