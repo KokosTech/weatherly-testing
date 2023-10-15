@@ -1,28 +1,6 @@
 from datetime import datetime
+from weather_app.api import WeatherAPI
 
-import requests
-
-WEATHER_API_KEY = "527183b7900188cd42cccab8cc903fd5"
-
-def city_exists(city_name):
-    current_weather_url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={WEATHER_API_KEY}&units=metric"
-    current_weather = requests.get(current_weather_url).json()
-    if current_weather['cod'] == 200:
-        return True
-    return False
-
-class WeatherAPI:
-    @staticmethod
-    def fetch_current_weather(city_name):
-        current_weather_url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={WEATHER_API_KEY}&units=metric"
-        current_weather = requests.get(current_weather_url).json()
-        return current_weather
-
-    @staticmethod
-    def fetch_5days_forecast(lat, lon):
-        daily_forecast_url = f"https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={WEATHER_API_KEY}&units=metric"
-        daily_forecast = requests.get(daily_forecast_url).json()
-        return daily_forecast
 
 class CityWeather:
     def __init__(self, json):
@@ -35,12 +13,16 @@ class CityWeather:
         self.low = round(json['main']['temp_min'])
         self.humidity = json['main']['humidity']
         self.wind_speed = round(json['wind']['speed'])
-        self.sunrise = datetime.utcfromtimestamp(json['sys']['sunrise']).strftime('%H:%M')
-        self.sunset = datetime.utcfromtimestamp(json['sys']['sunset']).strftime('%H:%M')
+        self.sunrise = datetime.utcfromtimestamp(
+            json['sys']['sunrise']).strftime('%H:%M')
+        self.sunset = datetime.utcfromtimestamp(
+            json['sys']['sunset']).strftime('%H:%M')
         self.forecast = []
 
     def add_daily_forecast(self, json):
-        assert json is not None
+        assert json is not None, "JSON cannot be None"
+        assert json != {}, "JSON cannot be empty"
+        assert 'daily' in json, "JSON must contain 'daily' key"
 
         for i in range(0, len(json['daily'])):
             day = json['daily'][i]
@@ -56,7 +38,8 @@ class CityWeather:
 
     @staticmethod
     def get_weather(city_name):
-        assert city_name is not None and city_name is not ""
+        assert city_name is not None, "City name cannot be None"
+        assert city_name != "", "City name cannot be empty"
 
         current_weather = WeatherAPI.fetch_current_weather(city_name)
 

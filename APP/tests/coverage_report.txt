@@ -1,0 +1,25 @@
+(venv) PS D:\School\12th grade\Software\programming\project\weatherly-testing\APP\tests> nox -- tests.py
+nox > Running session tests-3.11.5
+nox > Creating virtual environment (virtualenv) using python3.11 in .nox\tests-3-11-5
+nox > python -m pip install -r ../requirements.txt
+nox > coverage run -m pytest tests.py
+======================================================================== test session starts ========================================================================
+platform win32 -- Python 3.11.5, pytest-7.4.2, pluggy-1.3.0
+rootdir: D:\School\12th grade\Software\programming\project\weatherly-testing\APP\tests
+plugins: cov-4.1.0
+collected 10 items
+
+tests.py ..........                                                                                                                                            [100%]
+
+======================================================================== 10 passed in 0.67s =========================================================================
+nox > coverage report
+Name                                                                                                Stmts   Miss  Cover
+-----------------------------------------------------------------------------------------------------------------------
+D:\School\12th grade\Software\programming\project\weatherly-testing\APP\weather_app\api.py             17      0   100%
+D:\School\12th grade\Software\programming\project\weatherly-testing\APP\weather_app\exceptions.py       2      0   100%
+D:\School\12th grade\Software\programming\project\weatherly-testing\APP\weather_app\models.py          34      0   100%
+__init__.py                                                                                             0      0   100%
+tests.py                                                                                               62      0   100%
+-----------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                                 115      0   100%
+nox > Session tests-3.11.5 was successful.
