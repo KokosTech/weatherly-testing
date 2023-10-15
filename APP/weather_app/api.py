@@ -10,7 +10,7 @@ class WeatherAPI:
     def fetch_current_weather(city_name):
         current_weather_url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={WEATHER_API_KEY}&units=metric"
         current_weather = requests.get(current_weather_url).json()
-        
+
         if current_weather['cod'] == 200:
             return current_weather
         else:

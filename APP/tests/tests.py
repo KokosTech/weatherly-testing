@@ -3,9 +3,7 @@ import click.testing
 from unittest.mock import patch
 from weather_app.models import CityWeather, WeatherAPI
 from weather_app.exceptions import CityDoesNotExistException
-from weather_app import create_app
 
-# Mock response for WeatherAPI
 MOCK_VALID_CURRENT_WEATHER_RESPONSE = {
     'name': 'TestCity',
     'sys': {'country': 'TestCountry', 'sunrise': 1633759200, 'sunset': 1633802400},
@@ -30,7 +28,6 @@ MOCK_VALID_DAILY_FORECAST_RESPONSE = {
             'wind_speed': 12.0,
             'humidity': 45
         },
-        # ... more forecast data for the next days ...
     ]
 }
 
