@@ -7,19 +7,25 @@ nox > coverage run -m pytest tests.py
 platform win32 -- Python 3.11.5, pytest-7.4.2, pluggy-1.3.0
 rootdir: D:\School\12th grade\Software\programming\project\weatherly-testing\APP\tests
 plugins: cov-4.1.0
-collected 10 items
+collected 15 items
 
-tests.py ..........                                                                                                                                            [100%]
+tests.py ...............                                                                                                                                       [100%]
 
-======================================================================== 10 passed in 0.67s =========================================================================
+======================================================================== 15 passed in 1.23s =========================================================================
 nox > coverage report
 Name                                                                                                Stmts   Miss  Cover
 -----------------------------------------------------------------------------------------------------------------------
-D:\School\12th grade\Software\programming\project\weatherly-testing\APP\weather_app\api.py             17      0   100%
-D:\School\12th grade\Software\programming\project\weatherly-testing\APP\weather_app\exceptions.py       2      0   100%
-D:\School\12th grade\Software\programming\project\weatherly-testing\APP\weather_app\models.py          34      0   100%
+D:\School\12th grade\Software\programming\project\weatherly-testing\APP\app.py                          4      1    75%
+D:\School\12th grade\Software\programming\project\weatherly-testing\APP\weather_app\__init__.py         8      0   100%
+D:\School\12th grade\Software\programming\project\weatherly-testing\APP\weather_app\api.py             21      0   100%
+D:\School\12th grade\Software\programming\project\weatherly-testing\APP\weather_app\constants.py        6      0   100%
+D:\School\12th grade\Software\programming\project\weatherly-testing\APP\weather_app\exceptions.py       6      0   100%
+D:\School\12th grade\Software\programming\project\weatherly-testing\APP\weather_app\models.py          57      0   100%
+D:\School\12th grade\Software\programming\project\weatherly-testing\APP\weather_app\routes.py          16      1    94%
+D:\School\12th grade\Software\programming\project\weatherly-testing\APP\weather_app\schemas.py          2      0   100%
 __init__.py                                                                                             0      0   100%
-tests.py                                                                                               62      0   100%
+mock_data.py                                                                                            5      0   100%
+tests.py                                                                                              105      0   100%
 -----------------------------------------------------------------------------------------------------------------------
-TOTAL                                                                                                 115      0   100%
+TOTAL                                                                                                 230      2    99%
 nox > Session tests-3.11.5 was successful.
