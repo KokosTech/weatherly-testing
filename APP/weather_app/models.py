@@ -7,18 +7,15 @@ from weather_app.exceptions import InvalidJSONValueException
 class CityWeather:
     def _validate_temperature(self, temp):
         if not MIN_TEMP <= temp <= MAX_TEMP:
-            raise InvalidJSONValueException(
-                f'Temperature must be between {MIN_TEMP} and {MAX_TEMP}')
+            raise InvalidJSONValueException('Weather vendor returned invalid temperature')
 
     def _validate_lat(self, lat):
         if not MIN_LAT <= lat <= MAX_LAT:
-            raise InvalidJSONValueException(
-                f'Latitude must be between {MIN_LAT} and {MAX_LAT}')
+            raise InvalidJSONValueException('Weather vendor returned invalid latitude')
 
     def _validate_lon(self, lon):
         if not MIN_LON <= lon <= MAX_LON:
-            raise InvalidJSONValueException(
-                f'Longitude must be between {MIN_LON} and {MAX_LON}')
+            raise InvalidJSONValueException('Weather vendor returned invalid longitude')
 
     def __init__(self, json):
         self.name = json['name']
