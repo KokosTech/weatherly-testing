@@ -1,0 +1,11 @@
+(venv) PS D:\School\12th grade\Software\programming\project\weatherly-testing\APP> pylint --disable=C0114,C0116,C0115 ./weather_app
+************* Module weather_app.api
+weather_app\api.py:14:0: C0301: Line too long (131/100) (line-too-long)
+weather_app\api.py:25:0: C0301: Line too long (136/100) (line-too-long)
+************* Module weather_app.models
+weather_app\models.py:7:0: R0902: Too many instance attributes (14/7) (too-many-instance-attributes)
+************* Module weather_app.routes
+weather_app\routes.py:5:0: C0301: Line too long (113/100) (line-too-long)
+
+------------------------------------------------------------------
+Your code has been rated at 9.66/10 (previous run: 9.57/10, +0.09)

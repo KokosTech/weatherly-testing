@@ -1,6 +1,6 @@
 from datetime import datetime
 from weather_app.api import WeatherAPI
-from weather_app.constants import *
+from weather_app.constants import MAX_TEMP, MIN_TEMP, MAX_LAT, MIN_LAT, MAX_LON, MIN_LON
 from weather_app.exceptions import InvalidJSONValueException
 
 
@@ -57,7 +57,7 @@ class CityWeather:
 
             low = round(daily['temp']['min'])
             self._validate_temperature(low)
-            
+
             high = round(daily['temp']['max'])
             self._validate_temperature(high)
 
@@ -76,7 +76,8 @@ class CityWeather:
 
     @staticmethod
     def get_weather(city_name):
-        # We are sure that city_name is not None, not empty and not only whitespace, because we have already validated it in routes.py
+        # We are sure that city_name is not None, not empty and not only whitespace,
+        # because we have already validated it in routes.py
         assert city_name is not None, 'City name cannot be None'
         assert city_name != '', 'City name cannot be empty'
         assert not city_name.isspace(), 'City name cannot be only whitespace'
