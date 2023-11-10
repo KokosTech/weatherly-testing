@@ -15,9 +15,9 @@ def mock_requests_get():
 
 
 # WeatherAPI tests
-def test_fetch_current_weather_with_valid_data(mock_requests_get):
+def test_fetch_current_weather_with_valid_data(mock_requests_get, benchmark):
     mock_requests_get.return_value.json.return_value = MOCK_VALID_CURRENT_WEATHER_RESPONSE
-    result = WeatherAPI.fetch_current_weather('TestCity')
+    result = benchmark(WeatherAPI.fetch_current_weather, 'TestCity')
     assert result == MOCK_VALID_CURRENT_WEATHER_RESPONSE
 
 
@@ -33,9 +33,9 @@ def test_fetch_current_weather_with_invalid_city_name_that_should_throw_CityDoes
         WeatherAPI.fetch_current_weather('TestCity')
 
 
-def test_fetch_5days_forecast_with_valid_data(mock_requests_get):
+def test_fetch_5days_forecast_with_valid_data(mock_requests_get, benchmark):
     mock_requests_get.return_value.json.return_value = MOCK_VALID_DAILY_FORECAST_RESPONSE
-    result = WeatherAPI.fetch_5days_forecast(0.0, 0.0)
+    result = benchmark(WeatherAPI.fetch_5days_forecast, 0.0, 0.0)
     assert result == MOCK_VALID_DAILY_FORECAST_RESPONSE
 
 
@@ -153,13 +153,13 @@ def client():
 
 
 # Routes tests
-def test_index_route_with_valid_city(client):
+def test_index_route_with_valid_city(client, benchmark):
     with patch('weather_app.models.CityWeather.get_weather') as mock_get_weather:
         mock_city_weather = Mock(spec=CityWeather)
         mock_city_weather.name = 'Sofia'
         mock_get_weather.return_value = mock_city_weather
 
-        response = client.get('/?city=Sofia')
+        response = benchmark(client.get, '/?city=Sofia')
 
         mock_get_weather.assert_called_with('Sofia')
         assert b'Sofia' in response.data

@@ -1,0 +1,56 @@
+(venv) PS D:\School\12th grade\Software\programming\project\weatherly-testing\APP> bandit -r weather_app
+[main]  INFO    profile include tests: None
+[main]  INFO    profile exclude tests: None
+[main]  INFO    cli include tests: None
+[main]  INFO    cli exclude tests: None
+[main]  INFO    running on Python 3.11.5
+Run started:2023-11-10 13:39:23.779697
+
+Test results:
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.5/plugins/b101_assert_used.html
+   Location: weather_app\models.py:81:8
+80              # because we have already validated it in routes.py
+81              assert city_name is not None, 'City name cannot be None'
+82              assert city_name != '', 'City name cannot be empty'
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.5/plugins/b101_assert_used.html
+   Location: weather_app\models.py:82:8
+81              assert city_name is not None, 'City name cannot be None'
+82              assert city_name != '', 'City name cannot be empty'
+83              assert not city_name.isspace(), 'City name cannot be only whitespace'
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.5/plugins/b101_assert_used.html
+   Location: weather_app\models.py:83:8
+82              assert city_name != '', 'City name cannot be empty'
+83              assert not city_name.isspace(), 'City name cannot be only whitespace'
+84
+
+--------------------------------------------------
+
+Code scanned:
+        Total lines of code: 217
+        Total lines skipped (#nosec): 0
+
+Run metrics:
+        Total issues (by severity):
+                Undefined: 0
+                Low: 3
+                Medium: 0
+                High: 0
+        Total issues (by confidence):
+                Undefined: 0
+                Low: 0
+                Medium: 0
+                High: 3
+Files skipped (0):
