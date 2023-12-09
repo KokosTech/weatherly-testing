@@ -1,0 +1,10 @@
+// Commands to run the profiler
+
+// Step 1. Run the profiler and save the results to a file
+python -m cProfile -o profiler_report.pstats ../app.py
+
+// Step 2. Convert the results to a png file using gprof2dot
+gprof2dot -f pstats profiler_report.pstats | dot -Tpng -o profiler_report.png
+
+// Step 3. View the results in a browser using cprofilev
+cprofilev -f profiler_report.pstats

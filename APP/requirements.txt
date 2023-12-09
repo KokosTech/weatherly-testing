@@ -7,3 +7,6 @@ jsonschema
 pylint
 pytest-benchmark
 bandit
+flask_profiler
+prifiling
+cprofilev
